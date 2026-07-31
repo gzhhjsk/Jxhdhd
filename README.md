@@ -1,17 +1,21 @@
-# Reza Grootz Ultra Panel
+# Simple Shop Backend (TypeScript + Express)
 
-یک پنل مدیریتی فوق‌لوکس با تم مشکی-طلایی، گلسمورفیسم و المان‌های سایبرپانک.
+این یک نمونه بک‌اند ساده برای فروشگاه است که از دیتابیس در حافظه استفاده می‌کند.
 
-## امکانات
-- لاگین با تغییر اجباری رمز
-- داشبورد با آمار لحظه‌ای و نمودارها
-- مدیریت کاربران، سرورها و کانفیگ‌ها
-- پشتیبانی از VLESS، VMESS، Trojan، Reality، Shadowsocks، WireGuard
-- تولید لینک اشتراک و QR کد
-- مانیتورینگ ترافیک و آنلاین‌یوزرها
-- ترمینال داخلی، بکاپ و ریستور، تنظیمات
+نصب و اجرا:
+1. npm install
+2. npm run dev
 
-## نصب و اجرا
-```bash
-npm install
-npm run dev
+نقطه‌های انتهایی (endpoints):
+- GET /products            - لیست محصولات
+- GET /products/:id        - مشاهده محصول
+- POST /products           - افزودن محصول (body: { title, description?, price, inventory? })
+- POST /orders             - ایجاد سفارش (body: { items: [{ productId, quantity }] })
+- GET /orders              - لیست سفارش‌ها
+
+مثال curl:
+- دریافت محصولات:
+  curl http://localhost:3000/products
+
+- ایجاد سفارش:
+  curl -X POST http://localhost:3000/orders -H "Content-Type: application/json" -d '{"items":[{"productId":"<id>","quantity":2}]}'
